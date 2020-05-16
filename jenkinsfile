@@ -12,7 +12,7 @@ node('ubuntuaws'){
 
     stage('postbuild'){
         archiveArtifacts 'gameoflife-web/target/*.war'
-        archiveArtifacts 'gameoflife-web/target/surefire-reports/*.xml'
+        
     }
 
 }
