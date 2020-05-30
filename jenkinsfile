@@ -1,5 +1,5 @@
 
-node('ubuntuaws'){
+node('Build'){
     stage('scm'){
         git 'https://github.com/SandhyaKatigari/game-of-life.git'
 
