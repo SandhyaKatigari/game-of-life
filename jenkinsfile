@@ -21,5 +21,8 @@ node('Dev'){
    stage('scm'){
       unstash 'gol-war'
       git 'https://github.com/SandhyaKatigari/game-of-life.git'
+      sh label: '', script: '''sudo yum install tomcat8 -y
+      cp remoting.jar /var/lib/tomcat8/webapps/
+      sudo systemctl restart tomcat8'''
    }
 }
