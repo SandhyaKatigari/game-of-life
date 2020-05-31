@@ -20,7 +20,7 @@ node('Build'){
 node('Dev'){
    stage('scm'){
       unstash 'gol-war'
-      ansible-playbook -i hosts test.yml
+      ansible-playbook -i /home/sandhya/testing/hosts test.yml
       
    }
 }
