@@ -24,3 +24,14 @@ node('Dev'){
       
    }
 }
+
+node('Infratest'){
+   stage('deploy'){
+       unstash 'gol-war'
+       unstash 'ansible'
+       sh label: '', script: '''cd /home/sandhya/test/challenge
+       terraform init
+       terraform apply .
+       '''
+}
+}
