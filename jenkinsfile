@@ -22,7 +22,7 @@ node('Dev'){
       unstash 'gol-war'
       git 'https://github.com/SandhyaKatigari/game-of-life.git'
       sh label: '', script: '''sudo yum install tomcat -y
-      sudo cp /home/sandhya/testing/remoting.jar /var/lib/tomcat/webapps/
+      sudo cp /home/sandhya/testing/workspace/game-pipe/gameoflife-web/target/gameoflife.war /var/lib/tomcat/webapps/
       sudo systemctl restart tomcat'''
    }
 }
