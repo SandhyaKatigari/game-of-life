@@ -17,7 +17,7 @@ node('Build'){
     }
 
 }
-node('Dev){
+node('Dev'){
    stage('scm'){
       unstash 'gol-war'
       git 'https://github.com/SandhyaKatigari/game-of-life.git'
