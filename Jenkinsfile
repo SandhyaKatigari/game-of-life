@@ -6,7 +6,7 @@ node('Build'){
 
     stage('build'){
         sh label: '', script: 'mvn package'
-        stash name: 'gol-war', includes: 'gameoflife-web/target/gameoflife.war'
+        stash name: 'gol-war', includes: '~/workspace/Gol/gameoflife-web/target/gameoflife.war'
 
     }
 
@@ -19,7 +19,7 @@ node('Build'){
 node('Dev'){
    stage('scm'){
       unstash 'gol-war'
-      sh label: '', script: 'ansible-playbook -i /home/sandhya/testing/hosts /home/sandhya/test/test.yml'
+      sh label: '', script: 'ansible-playbook -i /home/sandhya/test/hosts /home/sandhya/test/test.yml'
       stash name: 'ansible-file', includes: '/home/sandhya/test/test.yml'
       
    }
