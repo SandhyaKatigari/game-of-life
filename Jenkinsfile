@@ -6,7 +6,7 @@ node('Build'){
 
     stage('build'){
         sh label: '', script: 'mvn package'
-        stash name: 'gol-war', includes: 'gameoflife.war'
+        stash name: 'gol-war', includes: '**/target/*.war'
 
     }
 
