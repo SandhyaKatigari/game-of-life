@@ -32,7 +32,8 @@ node('Infra'){
        
        sh label: '', script: '''cd /home/sandhya/test/challenge
        terraform init
-       terraform apply .
+       terraform plan -out ec2.plan
+       terraform apply ec2.plan
        '''
 }
 }
