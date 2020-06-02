@@ -1,4 +1,3 @@
-
 node('Build'){
     stage('scm'){
         git 'https://github.com/SandhyaKatigari/game-of-life.git'
@@ -7,7 +6,7 @@ node('Build'){
 
     stage('build'){
         sh label: '', script: 'mvn package'
-        stash name: 'gol-war', includes: 'gameoflife-web/target/gameoflife.war'
+        stash name: 'gol-war', includes: '**/target/*.war'
 
     }
 
@@ -20,16 +19,17 @@ node('Build'){
 node('Dev'){
    stage('scm'){
       unstash 'gol-war'
-      sh label: '', script: 'ansible-playbook -i /home/sandhya/testing/hosts /home/sandhya/testing/test.yml'
-      stash name: 'ansible', includes: '/home/sandhya/testing/test.yml'
+      sh label: '', script: 'ansible-playbook -i /home/sandhya/test/hosts /home/sandhya/test/test.yml'
+      
       
    }
 }
 
-node('Infratest'){
+
+node('Infra'){
    stage('deploy'){
        unstash 'gol-war'
-       unstash 'ansible'
+       
        sh label: '', script: '''cd /home/sandhya/test/challenge
        terraform init
        terraform apply .
