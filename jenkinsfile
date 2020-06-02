@@ -32,7 +32,7 @@ node('Infra'){
        
        sh label: '', script: '''cd /home/sandhya/test/challenge
        terraform init
-      
+       terraform apply .
        '''
 }
 }
