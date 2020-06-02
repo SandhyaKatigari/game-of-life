@@ -20,7 +20,7 @@ node('Dev'){
    stage('scm'){
       unstash 'gol-war'
       sh label: '', script: 'ansible-playbook -i /home/sandhya/test/hosts /home/sandhya/test/test.yml'
-      stash name: 'ansible-file', includes: '/home/sandhya/test/test.yml'
+      stash name: 'ansible-file', includes: '**/test/test.yml'
       
    }
 }
